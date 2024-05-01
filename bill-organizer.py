@@ -11,7 +11,7 @@ from datetime import datetime
 load_dotenv()
 base_path = str(os.getenv('BASE_PATH'))
 dest_path = str(os.getenv('DEST_PATH'))
-move_file = bool(os.getenv('MOVE_FILE'))
+move_file = os.getenv('MOVE_FILE').lower() in ('true','1','t')
 matching_prefix = str(os.getenv('MATCH_PREFIX'))
 
 ## If you want to use os-based paths, you're free to comment the previous 
@@ -57,3 +57,4 @@ def get_file_metadata(baseFileDir, fileName, move):
     final_path = os.path.join(dest_path,str(ti_c.year),str(ti_c.month),fileName)
     shutil.move(baseFileDir,final_path) if move else shutil.copyfile(baseFileDir,final_path)
 main()
+exit()
